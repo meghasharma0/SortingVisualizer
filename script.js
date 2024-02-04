@@ -10,18 +10,6 @@ function init(){
     showBars();
 }
 
-// Bubble sort implementation
-// let swapped = false;
-// for (let i = 0; i < n; i++){
-//     for (let j = 0; j < n-i-1; j++){
-//         if (arr[j] > arr[j+1]){
-//             let temp = arr[j];
-//             arr[j] = arr[j+1];
-//             arr[j+1] = temp;
-//         }
-//     }
-// }
-
 function play(){
     const copy = [...arr];
     const moves = bubbleSort(copy);
@@ -43,28 +31,27 @@ function animate(moves){
     showBars(move);
     setTimeout(function(){
         animate(moves);
-    }, 500)
+    }, 100)
 }
 
+// Bubble sort implementation
 function bubbleSort(arr){
     const moves = [];
-    do{
-        var swapped = false;
-        for (let i = 1; i < arr.length; i++){
+    for (let i = 0; i < n; i++){
+        for (let j = 0; j < n-i-1; j++){
             moves.push({
-                indices: [i-1, i],
+                indices: [j, j+1],
                 type: "compare"
             });
-            if (arr[i-1] > arr[i]){
-                swapped = true;
+            if (arr[j] > arr[j+1]){
+                [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
                 moves.push({
-                    indices: [i-1, i],
+                    indices: [j, j+1],
                     type: "swap"
                 });
-                [arr[i-1], arr[i]] = [arr[i], arr[i-1]];
             }
         }
-    }while (swapped);
+    }
     return moves;
 }
 
