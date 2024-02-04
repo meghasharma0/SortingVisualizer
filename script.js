@@ -11,7 +11,6 @@ const container = document.getElementById("container");
 for (let i = 0; i < arr.length; i++){
     const bar = document.createElement("div");
     bar.style.height = arr[i]*100 + "%";
-    bar.style.width = "10px";
-    bar.style.background = "black";
+    bar.classList.add("bar");
     container.appendChild(bar);
 }

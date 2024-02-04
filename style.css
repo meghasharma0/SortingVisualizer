@@ -8,3 +8,8 @@ body{
     display: flex;
     align-items: flex-end;
 }
+.bar{
+    width: 10px;
+    background: black;
+    margin: 1px;
+}
